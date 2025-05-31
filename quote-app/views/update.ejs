@@ -1,0 +1,26 @@
+<h1>Uppdatera citat</h1>
+<form id="updateForm">
+  <input id="id" placeholder="ID" required>
+  <input id="text" placeholder="Ny text" required>
+  <input id="author" placeholder="Ny författare" required>
+  <button type="submit">Uppdatera</button>
+</form>
+<script>
+  document.getElementById('updateForm').addEventListener('submit', async e => {
+    e.preventDefault()
+    const data = {
+      id: document.getElementById('id').value,
+      text: document.getElementById('text').value,
+      author: document.getElementById('author').value,
+    }
+    const res = await fetch('/api/quote', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    const result = await res.json()
+    if (result.success) alert('Citat uppdaterat')
+    else alert('Något gick fel')
+  })
+</script>
+<a href="/">Tillbaka</a>

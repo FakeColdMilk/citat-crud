@@ -1,0 +1,17 @@
+<h1>Ta bort ett citat</h1>
+<ul>
+  <% quotes.forEach(q => { %>
+    <li onclick="deleteQuote(<%= q.id %>)">
+      <%= q.id %>: <%= q.text %> – <%= q.author %>
+    </li>
+  <% }) %>
+</ul>
+<script>
+  async function deleteQuote(id) {
+    const res = await fetch('/api/quote/' + id, { method: 'DELETE' })
+    const data = await res.json()
+    if (data.success) location.reload()
+    else alert('Fel vid borttagning')
+  }
+</script>
+<a href="/">Tillbaka</a>

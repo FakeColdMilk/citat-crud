@@ -1,0 +1,14 @@
+<h1>Alla Citat</h1>
+<table border="1">
+  <tr><th>ID</th><th>Text</th><th>Author</th></tr>
+  <% quotes.forEach(q => { %>
+    <tr>
+      <td><%= q.id %></td>
+      <td><%= q.text %></td>
+      <td><%= q.author %></td>
+    </tr>
+  <% }) %>
+</table>
+<a href="/create">Lägg till nytt citat</a> |
+<a href="/delete">Ta bort citat</a> |
+<a href="/update">Uppdatera citat</a>
